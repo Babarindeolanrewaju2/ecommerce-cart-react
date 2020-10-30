@@ -4,8 +4,10 @@ import Close from './svg/times-solid.svg'
 import CartIcon from './svg/cart-plus-solid.svg'
 import './css/Header.css'
 import{Link} from 'react-router-dom'
+import {DataContext} from './Context'
 
 class Header extends Component {
+    static contextType = DataContext;
 
     state = {
         toggle: false
@@ -17,6 +19,7 @@ class Header extends Component {
   
   render() {
     const {toggle} = this.state;
+    const {cart} = this.context;
     return (
       <header>
               <div className="menu" onClick={this.menuToggle}>
@@ -27,15 +30,15 @@ class Header extends Component {
               </div>
               <nav>
                   <ul className={toggle ? "toggle" : ""}>
-                      <li><Link>Home</Link></li>
-                      <li><Link>Product</Link></li>
-                      <li><Link>Contact</Link></li>
-                      <li><Link>About</Link></li>
-                      <li><Link>Login/Register</Link></li>
+                  <li><Link to="/">Home</Link></li>
+                    <li><Link to="/product">Product</Link></li>
+                        <li><Link to="/contact">Contact</Link></li>
+                        <li><Link to="/about">About</Link></li>
+                        <li><Link to="/login">Login / Register</Link></li>
                       <li className="close" onClick={this.menuToggle}><img src={Close} alt="" width="20"/></li>
                   </ul>
                   <div className="nav-cart">
-                      <span>0</span>
+                      <span>{cart.length}</span>
                       <Link to="/cart">
                       <img src={CartIcon} alt="" width="20" />
                       </Link>
