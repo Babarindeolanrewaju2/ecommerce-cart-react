@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
+import Products from './section/Products'
+import Details from './section/Details'
+import {Route} from "react-router-dom"
 
 class componentName extends Component {
   render() {
     return (
-      <div> section </div>
+      <section>
+              <Route path="/" component={Products} exact />
+              <Route path="/product" component={Products} exact  />
+              <Route path="/product/:id" component={Details} exact />
+      </section>
     );
   }
 }
