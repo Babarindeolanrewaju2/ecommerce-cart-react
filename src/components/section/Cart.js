@@ -3,7 +3,7 @@ import {DataContext} from '../Context'
 import {Link} from 'react-router-dom'
 import Colors from './Colors'
 import '../css/Details.css'
-// import '../css/Cart.css'
+import '../css/Cart.css'
 
 export class Cart extends Component {
     static contextType = DataContext;
